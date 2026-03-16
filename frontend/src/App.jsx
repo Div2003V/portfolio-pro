@@ -1,6 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, ExternalLink, Award, Code, Briefcase, GraduationCap, Youtube } from 'lucide-react';
-import { profileData, experiences, accomplishments, education } from './data';
+import { profileData, experiences, accomplishments, education } from './Data';
 
 const Portfolio = () => {
   return (
