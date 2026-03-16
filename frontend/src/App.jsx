@@ -1,8 +1,17 @@
-import React from 'react';
-import { Github, Linkedin, ExternalLink, Award, Code, Briefcase, GraduationCap, Youtube } from 'lucide-react';
-import { profileData, experiences, accomplishments, education } from './Data';
+import React, { useEffect } from 'react';
+import { Github, Linkedin, Award, Code, GraduationCap } from 'lucide-react';
+// Added 'projects' to the import list below
+import { profileData, experiences, accomplishments, education, projects } from './Data';
 
 const Portfolio = () => {
+  // useEffect must be INSIDE the component function
+  useEffect(() => {
+    fetch('https://portfolio-pro-mdde.onrender.com/api/status')
+      .then(res => res.json())
+      .then(data => console.log("Backend Connection Successful:", data))
+      .catch(err => console.error("Backend unreachable:", err));
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0a192f] text-slate-300 font-sans selection:bg-blue-500/30">
       {/* Navigation */}
@@ -28,45 +37,44 @@ const Portfolio = () => {
             <span className="text-blue-400"> Revino</span>.
           </p>
           <div className="flex gap-6">
-            <a href={profileData.links.github} className="hover:text-blue-400 transition"><Github size={24} /></a>
-            <a href={profileData.links.linkedin} className="hover:text-blue-400 transition"><Linkedin size={24} /></a>
+            <a href={profileData.links.github} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition"><Github size={24} /></a>
+            <a href={profileData.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-blue-400 transition"><Linkedin size={24} /></a>
           </div>
         </section>
         
         {/* Projects Section */}
-<section id="projects" className="mb-28">
-  <h3 className="text-3xl font-bold text-slate-100 mb-10 flex items-center gap-4">
-    <Code className="text-blue-400" /> Featured Projects
-  </h3>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {projects.map((project, index) => (
-      <div key={index} className="bg-[#112240] p-8 rounded-xl border border-slate-800 hover:border-blue-400/50 transition-all group">
-        <div className="flex justify-between items-start mb-4">
-          <h4 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-            {project.title}
-          </h4>
-          <a href={project.link} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white">
-            <Github size={20} />
-          </a>
-        </div>
-        <p className="text-slate-400 text-sm leading-relaxed mb-6">
-          {project.desc}
-        </p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.split(',').map((t) => (
-            <span key={t} className="text-[10px] font-mono text-blue-300 bg-blue-900/30 px-2 py-1 rounded">
-              {t.trim()}
-            </span>
-          ))}
-        </div>
-        <ul className="text-[11px] text-slate-500 font-mono space-y-1">
-          {project.features.map(f => <li key={f}>▹ {f}</li>)}
-        </ul>
-      </div>
-    ))}
-  </div>
-</section>
-        
+        <section id="projects" className="mb-28">
+          <h3 className="text-3xl font-bold text-slate-100 mb-10 flex items-center gap-4">
+            <Code className="text-blue-400" /> Featured Projects
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project, index) => (
+              <div key={index} className="bg-[#112240] p-8 rounded-xl border border-slate-800 hover:border-blue-400/50 transition-all group">
+                <div className="flex justify-between items-start mb-4">
+                  <h4 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h4>
+                  <a href={project.link} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white">
+                    <Github size={20} />
+                  </a>
+                </div>
+                <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                  {project.desc}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.split(',').map((t) => (
+                    <span key={t} className="text-[10px] font-mono text-blue-300 bg-blue-900/30 px-2 py-1 rounded">
+                      {t.trim()}
+                    </span>
+                  ))}
+                </div>
+                <ul className="text-[11px] text-slate-500 font-mono space-y-1">
+                  {project.features.map(f => <li key={f}>▹ {f}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Accomplishments Grid */}
         <section className="mb-28">
@@ -121,11 +129,5 @@ const Portfolio = () => {
     </div>
   );
 };
-
-useEffect(() => {
-    fetch('https://your-backend-on-render.com/api/status')
-      .then(res => res.json())
-      .then(data => console.log("Backend Connection Successful:", data));
-  }, []);
 
 export default Portfolio;
