@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Github, Linkedin, Award, Code, GraduationCap } from 'lucide-react';
 // Added 'projects' to the import list below
-import { profileData, experiences, accomplishments, education, projects } from './Data';
+import { profileData, experiences, accomplishments, education, projects } from './data';
 
 const Portfolio = () => {
   // useEffect must be INSIDE the component function
