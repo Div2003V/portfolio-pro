@@ -32,32 +32,6 @@ const Portfolio = () => {
             <a href={profileData.links.linkedin} className="hover:text-blue-400 transition"><Linkedin size={24} /></a>
           </div>
         </section>
-
-        {/* Experience Section */}
-        {/* <section id="experience" className="mb-28">
-          <h3 className="text-3xl font-bold text-slate-100 mb-10 flex items-center gap-4">
-            <Briefcase className="text-blue-400" /> Professional Journey
-          </h3>
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <div key={index} className="group relative pl-8 border-l border-slate-700 hover:border-blue-400 transition-colors">
-                <div className="absolute -left-1.5 top-1 w-3 h-3 bg-slate-700 group-hover:bg-blue-400 rounded-full transition-colors" />
-                <div className="flex flex-wrap justify-between items-start mb-2">
-                  <h4 className="text-xl font-bold text-slate-100">{exp.role}</h4>
-                  <span className="text-sm font-mono text-blue-400">{exp.period}</span>
-                </div>
-                <p className="text-blue-200/80 font-medium mb-3">{exp.company} <span className="text-slate-500 text-sm ml-2">{exp.location}</span></p>
-                <p className="text-slate-400 max-w-2xl text-sm leading-relaxed mb-4">{exp.details}</p>
-                {exp.certLink && (
-                  <button className="flex items-center gap-2 text-xs font-mono text-blue-400 border border-blue-400/30 px-3 py-1 rounded hover:bg-blue-400/10 transition">
-                    View Certificate <ExternalLink size={12} />
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
-        </section> */}
-
         
         {/* Projects Section */}
 <section id="projects" className="mb-28">

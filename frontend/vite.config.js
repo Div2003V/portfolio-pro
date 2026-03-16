@@ -9,9 +9,13 @@ export default defineConfig({
     proxy: {
       // This redirects frontend API calls to your Render backend during local dev
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://portfolio-pro-mdde.onrender.com',
         changeOrigin: true,
+        secure: false,
       },
     },
   },
+  build: {
+    outDir: 'dist',
+  }
 })
