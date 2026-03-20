@@ -55,3 +55,15 @@
 .card:hover p {
   color: white;
 }
+
+button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  z-index: 9999;
+}

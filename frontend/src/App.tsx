@@ -4,11 +4,13 @@ import Achievements from "./components/Achievements";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import CursorGlow from "./components/CursorGlow";
+import Music from "./components/Music";
 
 
 function App() {
   return (
     <>
+      <Music />
       <CursorGlow />
       <Hero />
       <Achievements />
