@@ -1,148 +1,112 @@
 import React, { useEffect } from 'react';
-import { Github, Linkedin, Award, Code, GraduationCap, ExternalLink, Terminal } from 'lucide-react';
+import { Github, Linkedin, Award, Code, GraduationCap, ExternalLink, Terminal, Cpu, Globe, Rocket } from 'lucide-react';
 import { profileData, accomplishments, education, projects } from './data';
 
 const Portfolio = () => {
   useEffect(() => {
-    fetch('https://portfolio-pro-mdde.onrender.com/api/status')
-      .then(res => res.json())
-      .then(data => console.log("Backend Connection Successful:", data))
-      .catch(err => console.error("Backend unreachable:", err));
+    fetch('https://portfolio-pro-mdde.onrender.com/api/status').catch(() => {});
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a192f] text-[#8892b0] font-sans selection:bg-[#64ffda]/20 selection:text-[#64ffda]">
+    <div className="min-h-screen bg-background text-slate-200 font-sans antialiased selection:bg-accent/30">
       
-      {/* Navigation - Glassmorphism Effect */}
-      <nav className="fixed top-0 w-full bg-[#0a192f]/80 backdrop-blur-md z-50 border-b border-[#112240] h-20 flex items-center">
-        <div className="max-w-6xl mx-auto px-6 w-full flex justify-between items-center">
-          <span className="text-[#64ffda] font-mono font-bold text-xl tracking-tighter">DV.</span>
-          <div className="flex gap-8 text-xs font-mono tracking-widest uppercase">
-            <a href="#about" className="hover:text-[#64ffda] transition-colors duration-300">About</a>
-            <a href="#projects" className="hover:text-[#64ffda] transition-colors duration-300">Work</a>
-            <a href="#skills" className="hover:text-[#64ffda] transition-colors duration-300">Skills</a>
+      {/* Sleek Minimal Nav */}
+      <nav className="fixed top-0 w-full bg-background/60 backdrop-blur-xl z-50 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-8 h-16 flex justify-between items-center">
+          <span className="text-xl font-bold tracking-tighter text-white">DV<span className="text-accent">.</span></span>
+          <div className="hidden md:flex gap-8 text-sm font-medium text-muted">
+            <a href="#projects" className="hover:text-white transition">Projects</a>
+            <a href="#skills" className="hover:text-white transition">Stack</a>
+            <a href="#about" className="hover:text-white transition">About</a>
           </div>
+          <a href={profileData.links.github} className="text-sm bg-white text-black px-4 py-1.5 rounded-full font-bold hover:bg-accent transition">
+            GitHub
+          </a>
         </div>
       </nav>
 
-      <main className="max-w-5xl mx-auto px-6 pt-20 pb-20">
+      <main className="max-w-6xl mx-auto px-8 pt-32 pb-24">
         
-        {/* Hero Section */}
-        <section id="about" className="min-h-[80vh] flex flex-col justify-center mb-20">
-          <p className="text-[#64ffda] font-mono mb-5 tracking-wide">Hi, my name is</p>
-          <h1 className="text-5xl md:text-7xl font-bold text-[#ccd6f6] mb-4">
-            {profileData.name}.
+        {/* Hero - Ultra Modern Left-Aligned */}
+        <section id="about" className="mb-32 max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold mb-6">
+            <Rocket size={14} /> Available for 2026 roles
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black text-white tracking-tight mb-8">
+            Building the <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">future</span> of AI.
           </h1>
-          <h2 className="text-4xl md:text-6xl font-bold text-[#8892b0] leading-tight mb-8">
-            {profileData.title}
-          </h2>
-          <p className="max-w-xl text-lg leading-relaxed mb-10 text-[#8892b0]">
-            {profileData.summary} Currently engineering high-impact solutions at 
-            <span className="text-[#64ffda]"> Revino</span>.
+          <p className="text-xl text-muted leading-relaxed mb-10">
+            {profileData.summary} Lead Engineer at <span className="text-white font-bold">Revino</span>, specializing in high-concurrency systems.
           </p>
-          <div className="flex gap-6">
-            <a href={profileData.links.github} target="_blank" rel="noreferrer" 
-               className="p-3 border border-[#64ffda] text-[#64ffda] rounded hover:bg-[#64ffda]/10 transition-all duration-300">
-              <Github size={22} />
-            </a>
-            <a href={profileData.links.linkedin} target="_blank" rel="noreferrer" 
-               className="p-3 border border-[#64ffda] text-[#64ffda] rounded hover:bg-[#64ffda]/10 transition-all duration-300">
-              <Linkedin size={22} />
-            </a>
+          <div className="flex gap-4">
+             <Linkedin className="text-muted hover:text-accent cursor-pointer transition" />
+             <Github className="text-muted hover:text-accent cursor-pointer transition" />
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="mb-32">
-          <h3 className="text-2xl font-bold text-[#ccd6f6] mb-12 flex items-center gap-4 before:content-['01.'] before:text-[#64ffda] before:font-mono before:text-lg">
-            Featured Projects
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Featured Projects - Card Grid like the reference */}
+        <section id="projects" className="mb-40">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <h2 className="text-4xl font-bold text-white mb-2">Featured Work</h2>
+              <p className="text-muted">Selected projects from my engineering journey.</p>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="bg-[#112240] p-8 rounded-lg border border-transparent hover:border-[#64ffda]/30 transition-all duration-300 group hover:-translate-y-2 shadow-xl">
-                <div className="flex justify-between items-start mb-6">
-                  <Terminal className="text-[#64ffda]" size={32} />
-                  <div className="flex gap-4 text-[#ccd6f6]">
-                    <a href={project.link} target="_blank" rel="noreferrer" className="hover:text-[#64ffda] transition-colors">
-                      <Github size={20} />
-                    </a>
-                    <ExternalLink size={20} className="hover:text-[#64ffda] cursor-pointer" />
+              <div key={index} className="group relative bg-card border border-white/5 rounded-3xl p-8 hover:bg-slate-900/50 transition-all duration-500">
+                <div className="flex justify-between mb-8">
+                  <div className="p-3 bg-background rounded-2xl border border-white/5">
+                    <Terminal className="text-accent" size={24} />
                   </div>
+                  <ExternalLink className="text-muted group-hover:text-white transition" size={20} />
                 </div>
-                <h4 className="text-xl font-bold text-[#ccd6f6] mb-3 group-hover:text-[#64ffda] transition-colors">
-                  {project.title}
-                </h4>
-                <p className="text-[#8892b0] text-sm leading-relaxed mb-6">
-                  {project.desc}
-                </p>
-                <div className="flex flex-wrap gap-3 mb-6">
+                <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
+                <p className="text-muted text-sm mb-8 leading-relaxed">{project.desc}</p>
+                <div className="flex flex-wrap gap-2">
                   {project.tech.split(',').map((t) => (
-                    <span key={t} className="text-[11px] font-mono text-[#64ffda]">
+                    <span key={t} className="px-3 py-1 rounded-full bg-background border border-white/5 text-[10px] font-bold uppercase tracking-wider text-accent">
                       {t.trim()}
                     </span>
                   ))}
                 </div>
-                <ul className="text-[12px] text-[#64ffda]/70 font-mono space-y-1">
-                  {project.features.slice(0, 2).map(f => <li key={f}>▹ {f}</li>)}
-                </ul>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Accomplishments Grid */}
-        <section className="mb-32">
-          <h3 className="text-2xl font-bold text-[#ccd6f6] mb-12 flex items-center gap-4 before:content-['02.'] before:text-[#64ffda] before:font-mono before:text-lg">
-            Achievements
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {accomplishments.map((acc, i) => (
-              <div key={i} className="p-6 bg-[#112240] rounded border border-transparent hover:bg-[#233554] transition-all duration-300 group">
-                <p className="text-[#64ffda] font-mono text-[10px] mb-2 uppercase tracking-widest">{acc.category}</p>
-                <h4 className="text-[#ccd6f6] font-bold text-sm mb-2">{acc.title}</h4>
-                <p className="text-[11px] text-[#8892b0] leading-relaxed">{acc.note}</p>
+        {/* Arsenal - Minimalist Pill Layout */}
+        <section id="skills" className="mb-40">
+          <h2 className="text-4xl font-bold text-white mb-16 text-center">Technical Arsenal</h2>
+          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+            {["React", "Node.js", "Python", "Docker", "AWS", "PostgreSQL", "Redis", "TypeScript", "Go"].map((skill) => (
+              <div key={skill} className="px-8 py-4 bg-card border border-white/5 rounded-2xl text-lg font-medium hover:border-accent/50 transition cursor-default">
+                {skill}
               </div>
             ))}
           </div>
         </section>
 
-        {/* Education & Skills */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-20">
-          <div>
-            <h3 className="text-2xl font-bold text-[#ccd6f6] mb-10 flex items-center gap-4 before:content-['03.'] before:text-[#64ffda] before:font-mono before:text-lg">
-              Education
-            </h3>
-            <div className="relative pl-8 border-l-2 border-[#112240] hover:border-[#64ffda] transition-colors duration-500">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#0a192f] border-2 border-[#64ffda]"></div>
-              <h4 className="text-[#ccd6f6] font-bold text-lg leading-none">{education.degree}</h4>
-              <p className="text-[#64ffda] text-sm my-2 font-mono">{education.college}</p>
-              <div className="flex flex-col text-xs font-mono gap-1 text-[#8892b0]">
-                <span>GPA: {education.gpa}</span>
-                <span>Class of {education.graduation}</span>
-              </div>
-            </div>
+        {/* Education & Achievements */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="bg-card/50 p-10 rounded-3xl border border-white/5">
+            <GraduationCap className="text-accent mb-6" size={32} />
+            <h3 className="text-2xl font-bold text-white mb-2">{education.degree}</h3>
+            <p className="text-accent font-medium mb-4">{education.college}</p>
+            <p className="text-muted text-sm italic">Class of {education.graduation} • GPA {education.gpa}</p>
           </div>
+          <div className="bg-card/50 p-10 rounded-3xl border border-white/5">
+             <Award className="text-accent mb-6" size={32} />
+             <h3 className="text-2xl font-bold text-white mb-4">Top Accomplishment</h3>
+             <p className="text-muted leading-relaxed">{accomplishments[0].title}: {accomplishments[0].note}</p>
+          </div>
+        </div>
 
-          <div id="skills">
-            <h3 className="text-2xl font-bold text-[#ccd6f6] mb-10 flex items-center gap-4 before:content-['04.'] before:text-[#64ffda] before:font-mono before:text-lg">
-              Technical Arsenal
-            </h3>
-            <div className="flex flex-wrap gap-x-6 gap-y-3">
-              {["MERN Stack", "Java (DSA)", "Python", "DevOps", "AI Agents", "Cloud Computing", "SaaS", "MySQL", "Git"].map((skill) => (
-                <div key={skill} className="flex items-center gap-2 group">
-                  <span className="text-[#64ffda] group-hover:translate-x-1 transition-transform">▹</span>
-                  <span className="font-mono text-sm group-hover:text-[#64ffda] transition-colors">{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
       </main>
 
-      <footer className="py-12 text-center border-t border-[#112240] text-xs font-mono text-[#8892b0]">
-        <p className="hover:text-[#64ffda] transition-colors cursor-default">
-          Designed & Built by Divyansh Verma &copy; 2026
-        </p>
+      <footer className="py-20 border-t border-white/5 text-center">
+        <p className="text-muted text-sm">© 2026 Divyansh Verma. Built with precision.</p>
       </footer>
     </div>
   );
