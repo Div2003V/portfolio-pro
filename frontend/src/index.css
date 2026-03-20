@@ -8,42 +8,33 @@
 
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #0a192f;
-  color: #8892b0; /* Slate color for secondary text */
+  background-color: #020617;
+  color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
-/* Custom selection color */
+/* The Animated Mesh Gradient Background */
+.mesh-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(30, 64, 175, 0.1) 0px, transparent 50%);
+}
+
+/* Custom Selection */
 ::selection {
-  background-color: rgba(100, 255, 218, 0.1);
-  color: #64ffda;
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
 }
 
-/* Professional Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #0a192f;
-}
-::-webkit-scrollbar-thumb {
-  background: #233554;
-  border-radius: 10px;
-  border: 3px solid #0a192f;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #495670;
-}
-
-/* Smooth reveal animations for sections */
-.section-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-
-.section-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }

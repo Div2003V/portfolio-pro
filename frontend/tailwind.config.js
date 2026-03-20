@@ -4,13 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#020617', // The deep black-blue in the image
-        card: '#0f172a',       // Slightly lighter for cards
-        accent: '#38bdf8',     // Sky blue accent
-        muted: '#94a3b8',      // Grey text
+        background: '#020617', // Deepest Slate Black
+        card: '#0f172a',       // Slate Blue Card
+        accent: '#38bdf8',     // Electric Blue
+        muted: '#94a3b8',      // Soft Grey
       },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+      borderRadius: {
+        '3xl': '1.5rem',
+        '4xl': '2rem',
       },
     },
   },
