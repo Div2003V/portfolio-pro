@@ -4,17 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        // The warm background from the image
-        background: '#F5F2ED', 
-        // The deep blue/ink cards
-        card: '#0F172A',       
-        // The purple and orange accents
-        accent: '#7C3AED',     
-        orange: '#F97316',
-        // Secondary text
-        muted: '#64748B',
+        background: '#020617', // Deepest Slate Black
+        card: '#0f172a',       // Slate Blue Card
+        accent: '#38bdf8',     // Electric Blue
+        muted: '#94a3b8',      // Soft Grey
       },
       borderRadius: {
+        '3xl': '1.5rem',
         '4xl': '2rem',
       },
     },
