@@ -29,6 +29,12 @@ body {
   transition: opacity 0.4s ease;
 }
 
-.card:hover .video-bg {
-  opacity: 1;
+.card {
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 40px;
 }
